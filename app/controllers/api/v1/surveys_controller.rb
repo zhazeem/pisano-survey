@@ -2,7 +2,7 @@ class Api::V1::SurveysController < Api::V1::BaseController
   before_action :authenticate_user_from_token!, only: [:submit]
 
   def show
-    render json: Survey.first
+    render json: Survey.find(params[:id])
   end
 
   def submit
