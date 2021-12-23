@@ -1,0 +1,72 @@
+{
+	"variables": [],
+	"info": {
+		"name": "pisano-survey",
+		"_postman_id": "d7b03618-7b29-c120-7a23-1928ac9f47e0",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "show survey",
+			"request": {
+				"url": "http://localhost:3000/api/v1/surveys/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "submit survey",
+			"request": {
+				"url": "http://localhost:3000/api/v1/surveys/1/submit",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoyfSwiZXhwIjoxNjU1OTc2ODQzfQ.MkU32jzImZZw9rr-cOR-ec_pdyar-twgcsoA1Fp6urc",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"survey\":{\n\t\t\"survey_questions\":[{\n\t\t\t\"id\": 1,\n\t\t\t\"answer_text\": \"Good\"\n\t\t},{\n\t\t\t\"id\": 2,\n\t\t\t\"answer_text\": \"this is just dummy text\"\n\t\t}\n\t\t]\n\t}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "submit survey with errors",
+			"request": {
+				"url": "http://localhost:3000/api/v1/surveys/1/submit",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoyfSwiZXhwIjoxNjU1OTc2ODQzfQ.MkU32jzImZZw9rr-cOR-ec_pdyar-twgcsoA1Fp6urc",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"survey\":{\n\t\t\"survey_questions\":[{\n\t\t\t\"id\": 1,\n\t\t\t\"answer_text\": \"Good\"\n\t\t},{\n\t\t\t\"id\": 2,\n\t\t\t\"answer_text\": \"\"\n\t\t}\n\t\t]\n\t}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
