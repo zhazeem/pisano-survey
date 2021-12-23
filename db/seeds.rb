@@ -17,4 +17,6 @@ survey.survey_questions.find_or_create_by(
   position: 2
 )
 
+User.find_or_create_by(first_name: 'Zooz', last_name: 'Mooz')
+
 puts 'Questions added ...'
