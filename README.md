@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+How to run the app:
+1. run: `bundle install`
+2. change mysql connect credentials: config/database.yml
+3. run create db command: `rails db:create`
+4. run migrate: `rails db:migrate`
+4. run seeds: `rails db:seed`
+5. import pisano-survey.postman_collection.json into Postman to check the endpoints, you have to change the auth token for user
