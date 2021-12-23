@@ -34,8 +34,32 @@ RSpec.describe "Api::V1::SurveysController", type: :request do
   describe "POST /api/v1/surveys/:id/submit" do
     let(:user){ create(:user) }
 
+    context 'with non Authorization header' do
+      it "should return unauthorized" do
+        post submit_api_v1_survey_path(id: survey.id)
+
+        expect(response).to have_http_status(401)
+        json = JSON.parse(response.body).deep_symbolize_keys
+        expect(json[:error]).not_to be_nil
+      end
+    end
+
+    context 'with non unauthorized user' do
+      let(:object) do
+        {}
+      end
+
+      it "should return unauthorized" do
+        post submit_api_v1_survey_path(id: survey.id), params: object, headers: {Authorization: "bearer invalid"}
+
+        expect(response).to have_http_status(401)
+        json = JSON.parse(response.body).deep_symbolize_keys
+        expect(json[:error]).not_to be_nil
+      end
+    end
+
     context 'with good params' do
-      let!(:object) do
+      let(:object) do
         {
           survey:{
             survey_questions:[{
@@ -63,7 +87,7 @@ RSpec.describe "Api::V1::SurveysController", type: :request do
     end
 
     context 'with bad params' do
-      let!(:object) do
+      let(:object) do
         {
           survey:{
             survey_questions:[{
